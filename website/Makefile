@@ -4,3 +4,9 @@ deploy-website:
 	--exclude "*" \
 	--include "*.html" \
 	--include "*.jpg"
+
+terraform-plan:
+	terraform -chdir=terraform/env/dev/euw2 plan
+
+terraform-apply:
+	terraform -chdir=terraform/env/dev/euw2 apply
