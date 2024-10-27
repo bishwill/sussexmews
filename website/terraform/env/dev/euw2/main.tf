@@ -37,7 +37,17 @@ provider "aws" {
   }
 }
 
+provider "aws" {
+  alias = "use1"
+  region = "us-east-1"
+  default_tags {
+    tags = aws_servicecatalogappregistry_application.sussex_mews.application_tag
+  }
+}
 
 module "resources" {
   source = "../../../resources"
+  providers = {
+    aws.use1 = aws.use1
+  }
 }
