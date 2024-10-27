@@ -51,6 +51,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 data "aws_acm_certificate" "sussexmews" {
   provider = aws.use1
-  domain   = "*.sussexmews.co.uk"
+  domain   = "sussexmews.co.uk"
   statuses = ["ISSUED"]
 }
