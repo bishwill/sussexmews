@@ -36,4 +36,7 @@ provider "aws" {
   }
 }
 
-
+module "certificate" {
+  source = "./certificate_resources"
+  domain_name = "sussexmews.co.uk"
+}

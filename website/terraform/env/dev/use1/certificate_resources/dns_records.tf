@@ -1,16 +1,3 @@
-resource "aws_acm_certificate" "cert" {
-  domain_name       = "*.sussexmews.co.uk"
-  validation_method = "DNS"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-data "aws_route53_zone" "sussex_mews" {
-  name         = "sussexmews.co.uk"
-  private_zone = false
-}
 
 resource "aws_route53_record" "validation_records" {
   for_each = {
@@ -27,9 +14,4 @@ resource "aws_route53_record" "validation_records" {
   ttl             = 60
   type            = each.value.type
   zone_id         = data.aws_route53_zone.sussex_mews.zone_id
-}
-
-resource "aws_acm_certificate_validation" "sussex_mews" {
-  certificate_arn         = aws_acm_certificate.cert.arn
-  validation_record_fqdns = [for record in aws_route53_record.validation_records : record.fqdn]
 }
