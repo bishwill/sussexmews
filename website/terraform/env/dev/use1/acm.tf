@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "sussexmews.co.uk"
+  domain_name       = "*.sussexmews.co.uk"
   validation_method = "DNS"
 
   lifecycle {
