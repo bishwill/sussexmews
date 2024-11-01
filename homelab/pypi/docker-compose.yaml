@@ -1,0 +1,23 @@
+services:
+  pypi:
+    image: pypiserver/pypiserver:latest
+    volumes:
+      - data:/data/packages
+    restart: unless-stopped
+    command: -P . -a . /data/packages
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pypi.entrypoints=websecure"
+      - "traefik.http.routers.pypi.rule=Host(`pypi.sussexmews.co.uk`)"
+      - "traefik.http.routers.pypi.tls=true"
+      - "traefik.http.routers.pypi.tls.certresolver=letsencrypt"
+
+    networks:
+      - homelab
+
+networks:
+  homelab:
+    external: true
+
+volumes:
+  data:
