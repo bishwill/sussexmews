@@ -12,9 +12,27 @@ services:
     networks:
       - homelab
 
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@sussexmews.co.uk
+      - PGADMIN_DEFAULT_PASSWORD=assword
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - homelab
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pgadmin.entrypoints=websecure"
+      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.sussexmews.co.uk`)"
+      - "traefik.http.routers.pgadmin.tls=true"
+      - "traefik.http.routers.pgadmin.tls.certresolver=letsencrypt"
+
 networks:
   homelab:
     external: true
 
 volumes:
   pgdata:
+  pgadmin_data:
