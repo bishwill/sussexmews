@@ -1,16 +1,18 @@
-name: Self-Hosted Runner Workflow
+name: deploy
 
 on:
   push:
     branches:
       - gh-action-runner
+      - main
 
 jobs:
-  build:
+
+  deploy-website:
     runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run a one-liner script
-        run: echo "Hello, self-hosted runner!"
+      - name: deploy
+        run: docker run hello-world
