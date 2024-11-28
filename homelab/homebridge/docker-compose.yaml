@@ -16,4 +16,3 @@ services:
       - "traefik.http.routers.homebridge.rule=Host(`homebridge.sussexmews.co.uk`)"
       - "traefik.http.routers.homebridge.tls=true"
       - "traefik.http.routers.homebridge.tls.certresolver=letsencrypt"
-
