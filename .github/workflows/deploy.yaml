@@ -33,6 +33,9 @@ jobs:
       traefik: ${{ steps.filter.outputs.traefik }}
       nginx: ${{ steps.filter.outputs.nginx }}
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - uses: dorny/paths-filter@v3
       id: filter
       with:
