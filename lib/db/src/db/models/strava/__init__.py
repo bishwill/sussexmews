@@ -1,2 +1,2 @@
-from db.models.strava.base import Base
-from db.models.strava.test import Test
+from db.models.strava.base import Base as Base
+from db.models.strava.test import Test as Test
