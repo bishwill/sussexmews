@@ -1,4 +1,4 @@
-name: deploy
+name: format-and-lint
 
 on:
   pull_request:
