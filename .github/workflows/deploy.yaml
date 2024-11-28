@@ -27,8 +27,6 @@ jobs:
   changes:
     runs-on: self-hosted
     needs: format-and-lint
-    permissions:
-      pull-requests: read
     outputs:
       traefik: ${{ steps.filter.outputs.traefik }}
       nginx: ${{ steps.filter.outputs.nginx }}
