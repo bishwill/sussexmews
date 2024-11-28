@@ -19,12 +19,6 @@ RUN echo \
 RUN apt update -y
 RUN apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# install the github runner code/dependencies
-WORKDIR /actions-runner
-RUN curl -o actions-runner-linux-x64-2.321.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.321.0/actions-runner-linux-x64-2.321.0.tar.gz
-RUN echo "ba46ba7ce3a4d7236b16fbe44419fb453bc08f866b24f04d549ec89f1722a29e  actions-runner-linux-x64-2.321.0.tar.gz" | shasum -a 256 -c
-RUN tar xzf ./actions-runner-linux-x64-2.321.0.tar.gz
-RUN ./bin/installdependencies.sh
 
 COPY start.sh start.sh
 RUN chmod +x start.sh
