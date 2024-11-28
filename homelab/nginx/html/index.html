@@ -1,1 +1,102 @@
-this was deployed with github actions!!!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sussex Mews Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("sussexmews.jpeg");
+        }
+
+        header {
+            background-color: #fb0000;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .post {
+            background: #e9e3e3;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .post h2 {
+            color: #333;
+        }
+
+        .post p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .breaking-news-background {
+            background-color: #fff200;
+            padding: 1px 0;
+        }
+        .breaking-news-text {
+            color: rgb(0, 0, 0);
+            animation: move 5s linear infinite;
+        }
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100pc);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="breaking-news-background">
+        <h2 class="breaking-news-text">Breaking News- Toilet out of bounds for 20 minutes AT LEAST!!!</h2>
+    </div>
+    <header>
+        <h1>Sussex Mews Blog</h1>
+    </header>
+    <a href="about-us.html">Click here to visit Example.com</a>
+   
+    <div class="container">
+        <div class="post">
+            <h2>Post Title 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum
+                vestibulum.</p>
+        </div>
+        
+        <!-- Add more posts as needed -->
+    </div>
+    <footer>
+        <p>&copy; 2024 Sussex Mews Blog</p>
+    </footer>
+</body>
+
+</html>
