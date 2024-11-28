@@ -10,8 +10,22 @@ services:
       - ./config/traefik_dynamic.yaml:/etc/traefik/traefik_dynamic.yml:ro
     networks:
       - homelab
-    env_file: .env
+    environment:
+      AWS_ACCESS_KEY_ID: /run/secrets/traefik_aws_access_key_id
+      AWS_SECRET_ACCESS_KEY: /run/secrets/traefik_aws_secret_access_key
+      AWS_REGION: /run/secrets/traefik_aws_region
+      AWS_HOSTED_ZONE_ID: /run/secrets/traefik_aws_hosted_zone_id
 
 networks:
   homelab:
+    external: true
+
+secrets:
+  traefik_aws_access_key_id:
+    external: true
+  traefik_aws_secret_access_key:
+    external: true
+  traefik_aws_region:
+    external: true
+  traefik_aws_hosted_zone_id:
     external: true

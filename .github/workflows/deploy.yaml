@@ -24,9 +24,28 @@ jobs:
       - name: Lint
         run: uv run ruff format --check .
 
+  changes:
+    runs-on: ubuntu-latest
+    needs: format-and-lint
+    permissions:
+      pull-requests: read
+    outputs:
+      traefik: ${{ steps.filter.outputs.traefik }}
+      nginx: ${{ steps.filter.outputs.nginx }}
+    steps:
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          traefik:
+            - 'homelab/traefik/**'
+          nginx:
+            - 'homelab/nginx/**'
+
   deploy-traefik-config:
     runs-on: self-hosted
-    needs: format-and-lint
+    needs: changes
+    if: ${{ needs.changes.outputs.traefik == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -36,7 +55,8 @@ jobs:
 
   deploy-website:
     runs-on: self-hosted
-    needs: format-and-lint
+    needs: changes
+    if: ${{ needs.changes.outputs.nginx == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
