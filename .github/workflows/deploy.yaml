@@ -30,6 +30,7 @@ jobs:
     outputs:
       traefik: ${{ steps.filter.outputs.traefik }}
       nginx: ${{ steps.filter.outputs.nginx }}
+      homebridge: ${{ steps.filter.outputs.homebridge }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -42,6 +43,8 @@ jobs:
             - 'homelab/traefik/**'
           nginx:
             - 'homelab/nginx/**'
+          homebridge:
+             - 'homelab/homebridge/**'
 
   deploy-traefik-config:
     runs-on: self-hosted
@@ -65,3 +68,14 @@ jobs:
 
       - name: deploy
         run: docker stack deploy -c homelab/nginx/docker-compose.yaml nginx
+
+  deploy-homebridge:
+    runs-on: self-hosted
+    needs: changes
+    if: ${{ needs.changes.outputs.homebridge == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: deploy
+        run: docker compose -f homelab/nginx/docker-compose.yaml up
