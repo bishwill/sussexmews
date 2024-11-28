@@ -15,27 +15,9 @@ http:
             sans:
               - "*.sussexmews.co.uk"
 
-    nginx:
-      entrypoints:
-        - websecure
-      rule: Host(`nginx.sussexmews.co.uk`)
-      service: nginx
-      tls:
-        certResolver: letsencrypt
-        domains:
-          - main: "sussexmews.co.uk"
-            sans:
-              - "*.sussexmews.co.uk"
-
-
   middlewares:
     auth:
       basicAuth:
         users:
           - "admin:$2y$05$fSBrNpileETke85./bllK.evbLLQLo.Kz3wKNNJY7QU1rqtjS8ez2"
 
-  services:
-    nginx:
-      loadBalancer:
-        servers:
-          - url: "http://nginx:80"
