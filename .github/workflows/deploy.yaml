@@ -24,9 +24,41 @@ jobs:
       - name: Lint
         run: uv run ruff format --check .
 
-  deploy-website:
+  changes:
     runs-on: self-hosted
     needs: format-and-lint
+    outputs:
+      traefik: ${{ steps.filter.outputs.traefik }}
+      nginx: ${{ steps.filter.outputs.nginx }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          traefik:
+            - 'homelab/traefik/**'
+          nginx:
+            - 'homelab/nginx/**'
+
+  deploy-traefik-config:
+    runs-on: self-hosted
+    needs: changes
+    if: ${{ needs.changes.outputs.traefik == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: deploy
+        run: docker service update --force traefik_reverse-proxy
+
+
+  deploy-website:
+    runs-on: self-hosted
+    needs: changes
+    if: ${{ needs.changes.outputs.nginx == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

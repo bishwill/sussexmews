@@ -15,50 +15,9 @@ http:
             sans:
               - "*.sussexmews.co.uk"
 
-    nginx:
-      entrypoints:
-        - websecure
-      rule: Host(`nginx.sussexmews.co.uk`)
-      service: nginx
-      tls:
-        certResolver: letsencrypt
-        domains:
-          - main: "sussexmews.co.uk"
-            sans:
-              - "*.sussexmews.co.uk"
-
-    pihole:
-      entrypoints:
-        - websecure
-      rule: Host(`pihole.sussexmews.co.uk`)
-      service: pihole
-      middlewares:
-        - add-pihole-admin
-      tls:
-        certResolver: letsencrypt
-        domains:
-          - main: "sussexmews.co.uk"
-            sans:
-              - "*.sussexmews.co.uk"
-
-
   middlewares:
     auth:
       basicAuth:
         users:
           - "admin:$2y$05$fSBrNpileETke85./bllK.evbLLQLo.Kz3wKNNJY7QU1rqtjS8ez2"
 
-    add-pihole-admin:
-      addPrefix:
-        prefix: "/admin"
-
-  services:
-    nginx:
-      loadBalancer:
-        servers:
-          - url: "http://nginx:80"
-
-    pihole:
-      loadBalancer:
-        servers:
-          - url: "http://pihole:80"
