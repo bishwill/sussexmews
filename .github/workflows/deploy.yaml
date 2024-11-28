@@ -3,7 +3,6 @@ name: deploy
 on:
   push:
     branches:
-      - gh-action-runner
       - main
 
 jobs:
