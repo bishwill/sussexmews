@@ -10,7 +10,7 @@ services:
         max-size: "10mb"
         max-file: "1"
     networks: 
-      - homelab
+      - homelab2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.homebridge.entrypoints=websecure"
@@ -20,5 +20,5 @@ services:
       - "traefik.http.routers.homebridge.tls.certresolver=letsencrypt"
 
 networks:
-  homelab:
+  homelab2:
     external: true

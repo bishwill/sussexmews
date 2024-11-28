@@ -10,6 +10,7 @@ services:
       - ./config/traefik_dynamic.yaml:/etc/traefik/traefik_dynamic.yml:ro
     networks:
       - homelab
+      - homelab2
     secrets:
       - traefik_aws_credentials
 
@@ -21,6 +22,9 @@ services:
 networks:
   homelab:
     external: true
+  homelab2:
+    external: true
+
 
 secrets:
   traefik_aws_credentials:
