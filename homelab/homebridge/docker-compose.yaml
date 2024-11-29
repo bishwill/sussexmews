@@ -9,16 +9,4 @@ services:
       options:
         max-size: "10mb"
         max-file: "1"
-    networks: 
-      - homelab2
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.homebridge.entrypoints=websecure"
-      - "traefik.http.routers.homebridge.entrypoints=web"
-      - "traefik.http.routers.homebridge.rule=Host(`homebridge.sussexmews.co.uk`)"
-      - "traefik.http.routers.homebridge.tls=true"
-      - "traefik.http.routers.homebridge.tls.certresolver=letsencrypt"
-
-networks:
-  homelab2:
-    external: true
+    network_mode: host

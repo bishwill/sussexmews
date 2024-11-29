@@ -15,6 +15,20 @@ http:
             sans:
               - "*.sussexmews.co.uk"
 
+    homebridge:
+      entryPoints:
+        - websecure
+      rule: "Host(`homebridge.sussexmews.co.uk`)"
+      service: homebridge-service
+      tls:
+        certResolver: letsencrypt
+
+services:
+  homebridge-service:
+    loadBalancer:
+      servers:
+        - url: "http://192.168.1.117:8581/"
+
   middlewares:
     auth:
       basicAuth:
