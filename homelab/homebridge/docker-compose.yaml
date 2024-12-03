@@ -1,6 +1,7 @@
 services:
   homebridge:
     image: homebridge/homebridge:latest
+    container_name: homebridge
     restart: always
     volumes:
       - ./volumes/homebridge:/homebridge

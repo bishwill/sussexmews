@@ -19,15 +19,30 @@ http:
       entryPoints:
         - websecure
       rule: "Host(`homebridge.sussexmews.co.uk`)"
-      service: homebridge-service
+      service: homebridge
       tls:
         certResolver: letsencrypt
 
-services:
-  homebridge-service:
-    loadBalancer:
-      servers:
-        - url: "http://192.168.1.117:8581/"
+    hyperoptic:
+      entryPoints:
+        - websecure
+      rule: "Host(`hyperoptic.sussexmews.co.uk`)"
+      service: hyperoptic
+      tls:
+        certResolver: letsencrypt
+
+
+  services:
+    homebridge:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.117:8581/"
+
+    hyperoptic:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.1"
+
 
   middlewares:
     auth:
