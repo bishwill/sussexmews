@@ -5,6 +5,8 @@ services:
     networks:
       - homelab
     restart: always
+    environment:
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.docker.entrypoints=websecure"
