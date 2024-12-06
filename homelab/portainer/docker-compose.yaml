@@ -1,10 +1,11 @@
 services:
   portainer:
     image: portainer/portainer-ce:latest
+    container_name: portainer
     volumes:
       - data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
+    restart: always
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=websecure"
@@ -22,3 +23,4 @@ networks:
 
 volumes:
   data:
+    name: portainer-data
