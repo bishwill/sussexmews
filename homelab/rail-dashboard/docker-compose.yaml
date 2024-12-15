@@ -1,0 +1,18 @@
+services:
+  departure-board:
+    image: docker.sussexmews.co.uk/rail-dashboard:latest
+    container_name: rail-dashboard
+    networks:
+      - homelab
+    volumes:
+    - "./config.xml:/app/config.xml"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.departures.entrypoints=websecure"
+      - "traefik.http.routers.departures.rule=Host(`departures.sussexmews.co.uk`)"
+      - "traefik.http.routers.departures.tls=true"
+      - "traefik.http.routers.departures.tls.certresolver=letsencrypt"
+
+networks:
+  homelab:
+    external: true

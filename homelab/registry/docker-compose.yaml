@@ -1,0 +1,46 @@
+services:
+  registry:
+    container_name: registry
+    image: registry:2
+    networks:
+      - homelab
+    restart: always
+    environment:
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.docker.entrypoints=websecure"
+      - "traefik.http.routers.docker.rule=Host(`docker.sussexmews.co.uk`)"
+      - "traefik.http.routers.docker.tls=true"
+      - "traefik.http.routers.docker.tls.certresolver=letsencrypt"
+
+
+  registry-ui:
+    container_name: registry-ui
+    image: joxit/docker-registry-ui:main
+    restart: always
+    networks:
+      - homelab
+    environment:
+      - SINGLE_REGISTRY=true
+      - REGISTRY_TITLE=Sussex Mews Docker Registry UI
+      - DELETE_IMAGES=true
+      - SHOW_CONTENT_DIGEST=true
+      - NGINX_PROXY_PASS_URL=http://registry:5000
+      - SHOW_CATALOG_NB_TAGS=true
+      - CATALOG_MIN_BRANCHES=1
+      - CATALOG_MAX_BRANCHES=1
+      - TAGLIST_PAGE_SIZE=100
+      - REGISTRY_SECURED=false
+      - CATALOG_ELEMENTS_LIMIT=1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dockerhub.entrypoints=websecure"
+      - "traefik.http.routers.dockerhub.rule=Host(`dockerhub.sussexmews.co.uk`)"
+      - "traefik.http.routers.dockerhub.tls=true"
+      - "traefik.http.routers.dockerhub.tls.certresolver=letsencrypt"
+
+
+networks:
+  homelab:
+    external: true

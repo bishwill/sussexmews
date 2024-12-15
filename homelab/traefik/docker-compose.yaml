@@ -2,6 +2,7 @@ services:
   reverse-proxy:
     container_name: traefik-reverse-proxy
     image: traefik:v3.1
+    restart: always
     ports:
       - "80:80"
       - "443:443"
