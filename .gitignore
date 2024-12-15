@@ -61,3 +61,5 @@ var-log/
 postgres-passwd
 
 homelab/homebridge/volumes/homebridge
+
+config.xml
