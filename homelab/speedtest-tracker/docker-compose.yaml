@@ -1,0 +1,34 @@
+services:
+  speedtest-tracker:
+    image: lscr.io/linuxserver/speedtest-tracker:latest
+    restart: always
+    container_name: speedtest-tracker
+    ports:
+        - 8080:80
+    environment:
+        - PUID=1000
+        - PGID=1000
+        - DB_CONNECTION=sqlite
+        - APP_KEY=base64:AuKyYhfUkQ2LpzK7gLKCEouGqW/JBlo7KgLja4M6BbI=
+        - DATETIME_FORMAT=
+        - APP_TIMEZONE=Europe/London
+        - PUBLIC_DASHBOARD=true
+        - SPEEDTEST_SCHEDULE=0,30 * * * *
+        - SPEEDTEST_SERVERS=14679
+    volumes:
+        - ./config:/config
+    networks:
+      - homelab
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.speedtest.entrypoints=websecure"
+      - "traefik.http.routers.speedtest.rule=Host(`speedtest.sussexmews.co.uk`)"
+      - "traefik.http.routers.speedtest.tls=true"
+      - "traefik.http.routers.speedtest.tls.certresolver=letsencrypt"
+
+
+
+networks:
+  homelab:
+    external: true
