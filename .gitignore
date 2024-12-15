@@ -59,7 +59,6 @@ etc-pihole/
 var-log/
 
 postgres-passwd
-
 homelab/homebridge/volumes/homebridge
-
 config.xml
+homelab/speedtest-tracker/config
