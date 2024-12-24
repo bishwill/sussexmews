@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ../airflow/data/bills/bills.html:/usr/share/nginx/html/index.html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - homelab
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bills.entrypoints=websecure"
+      - "traefik.http.routers.bills.rule=Host(`bills.sussexmews.co.uk`)"
+      - "traefik.http.routers.bills.tls=true"
+      - "traefik.http.routers.bills.tls.certresolver=letsencrypt"
+
+networks:
+  homelab:
+    external: true
