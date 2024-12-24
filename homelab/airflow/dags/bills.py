@@ -54,4 +54,10 @@ git_commit = BashOperator(
     dag=dag,
 )
 
-make_folder_if_not_exists >> git_init >> [download_latest_csv_file, download_latest_html_file] >> git_add >> git_commit
+(
+    make_folder_if_not_exists
+    >> git_init
+    >> [download_latest_csv_file, download_latest_html_file]
+    >> git_add
+    >> git_commit
+)
