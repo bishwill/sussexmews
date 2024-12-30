@@ -36,7 +36,7 @@ http:
     homebridge:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.117:8581/"
+          - url: "http://192.168.0.2:8581/"
 
     hyperoptic:
       loadBalancer:
