@@ -68,3 +68,7 @@ homelab/document-store/consume
 homelab/document-store/data
 homelab/document-store/export
 homelab/document-store/media
+homelab/jellyfin/cache
+homelab/jellyfin/config
+homelab/jellyfin/fonts
+homelab/jellyfin/media
