@@ -8,10 +8,7 @@ services:
       - "51821:51821/tcp"
     networks:
       - homelab
-    environment:
-      - LANG=en
-      - WG_HOST=100.68.215.3
-      - PASSWORD_HASH=$$2a$$12$$ICofAb8/crLnOAEjKLnizenWK.n1MjT1fmu/RjurXLa4Hb.SJS916
+    env_file: .env
     volumes:
       - etc_wireguard:/etc/wireguard
     cap_add:
