@@ -1,0 +1,43 @@
+services:
+  broker:
+    image: docker.io/library/redis:7
+    container_name: document-store-redis
+    restart: always
+    volumes:
+      - redis_data:/data
+    networks:
+      - homelab
+
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: document-store-webserver
+    restart: always
+    depends_on:
+      - broker
+    volumes:
+      - ./data:/usr/src/paperless/data
+      - ./media:/usr/src/paperless/media
+      - ./export:/usr/src/paperless/export
+      - ./consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db.sussexmews.co.uk
+      PAPERLESS_CSRF_TRUSTED_ORIGINS: https://documents.sussexmews.co.uk
+    networks:
+      - homelab
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.documents.entrypoints=websecure"
+      - "traefik.http.routers.documents.rule=Host(`documents.sussexmews.co.uk`)"
+      - "traefik.http.routers.documents.tls=true"
+      - "traefik.http.routers.documents.tls.certresolver=letsencrypt"
+
+
+
+volumes:
+  redis_data:
+    name: document-store-redis-data
+
+networks:
+  homelab:
+    external: true

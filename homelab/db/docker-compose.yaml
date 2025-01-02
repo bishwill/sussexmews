@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:17
+    container_name: db
     restart: always
     ports:
       - "5432:5432"
@@ -14,6 +15,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     restart: always
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@sussexmews.co.uk
@@ -35,4 +37,6 @@ networks:
 
 volumes:
   pgdata:
+    name: db-data
   pgadmin_data:
+    name: pgadmin-data

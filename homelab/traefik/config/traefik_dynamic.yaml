@@ -31,6 +31,13 @@ http:
       tls:
         certResolver: letsencrypt
 
+    tplink:
+      entryPoints:
+        - websecure
+      rule: "Host(`tplink.sussexmews.co.uk`)"
+      service: tplink
+      tls:
+        certResolver: letsencrypt
 
   services:
     homebridge:
@@ -42,6 +49,11 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.1.1"
+
+    tplink:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.0.1"
 
 
   middlewares:
