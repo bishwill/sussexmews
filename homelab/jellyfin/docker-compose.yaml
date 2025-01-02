@@ -1,0 +1,27 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    networks:
+      - homelab
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media
+      - ./fonts:/usr/local/share/fonts/custom:ro
+    restart: always
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.sussexmews.co.uk
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.entrypoints=websecure"
+      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.sussexmews.co.uk`)"
+      - "traefik.http.routers.jellyfin.tls=true"
+      - "traefik.http.routers.jellyfin.tls.certresolver=letsencrypt"
+
+networks:
+  homelab:
+    external: true
