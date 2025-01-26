@@ -7,5 +7,5 @@ resource "aws_route53_record" "wildcard" {
   name    = "*"
   type    = "A"
   ttl     = 300
-  records = ["192.168.0.200"]
+  records = ["192.168.12.3"]
 }
