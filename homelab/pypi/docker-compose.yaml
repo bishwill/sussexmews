@@ -1,8 +1,9 @@
 services:
   pypi:
+    container_name: pypi
     image: pypiserver/pypiserver:latest
     volumes:
-      - data:/data/packages
+      - ./data:/data/packages
     restart: unless-stopped
     command: -P . -a . /data/packages
     labels:
