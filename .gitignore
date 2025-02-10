@@ -73,3 +73,4 @@ homelab/jellyfin/config
 homelab/jellyfin/fonts
 homelab/jellyfin/media
 homelab/traefik/config/acme.json
+homelab/pypi/data
