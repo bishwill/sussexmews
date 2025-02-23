@@ -40,7 +40,9 @@ def send_email(email: str, balance: float):
     gif.add_header("Content-ID", "<image>")
     msg.attach(gif)
 
-    with smtplib.SMTP_SSL(EMAIL_CREDENTIALS.host, EMAIL_CREDENTIALS.port) as smtp_server:
+    with smtplib.SMTP_SSL(
+        EMAIL_CREDENTIALS.host, EMAIL_CREDENTIALS.port
+    ) as smtp_server:
         smtp_server.login(sender_email, password)
         smtp_server.sendmail(sender_email, recipients, msg.as_string())
 
