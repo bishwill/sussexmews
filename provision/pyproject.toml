@@ -1,6 +1,6 @@
 [project]
 name = "provision"
-version = "0.1.0"
+version = "0.2.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -12,8 +12,11 @@ dependencies = [
     "constructs>=10.4.2",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/provision"]
+
 [project.scripts]
-provision = "provision:main"
+hello = "provision:hello"
 
 [build-system]
 requires = ["hatchling"]
