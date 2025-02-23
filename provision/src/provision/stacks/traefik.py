@@ -4,7 +4,6 @@ from aws_cdk import (
     aws_iam as iam,
     aws_route53 as route53,
     Duration,
-    Environment
 )
 from constructs import Construct
 
@@ -44,11 +43,10 @@ class TraefikStack(Stack):
         )
         dns_modifier_policy.attach_to_user(dns_modifier_user)
 
-
-
-
         hosted_zone = route53.HostedZone.from_lookup(
-            self, id="hosted-zone", domain_name="sussexmews.co.uk",
+            self,
+            id="hosted-zone",
+            domain_name="sussexmews.co.uk",
         )
 
         route53.ARecord(

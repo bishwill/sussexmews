@@ -1,1 +1,1 @@
-from .traefik import TraefikStack
+from .traefik import TraefikStack as TraefikStack
