@@ -74,3 +74,8 @@ homelab/jellyfin/fonts
 homelab/jellyfin/media
 homelab/traefik/config/acme.json
 homelab/pypi/data
+
+
+# cdk
+cdk.out
+cdk.context.json
