@@ -11,6 +11,9 @@ dependencies = ["provision"]
 
 [project.scripts]
 sussexmews = "sussexmews:main"
+format = "sussexmews:format"
+lint = "sussexmews:lint"
+lintfix = "sussexmews:lintfix"
 
 [build-system]
 requires = ["hatchling"]
@@ -25,3 +28,8 @@ provision = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sussexmews"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.7",
+]
