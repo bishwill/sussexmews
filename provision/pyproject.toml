@@ -17,6 +17,7 @@ packages = ["src/provision"]
 
 [project.scripts]
 hello = "provision:hello"
+provision = "provision.main:main"
 
 [build-system]
 requires = ["hatchling"]
