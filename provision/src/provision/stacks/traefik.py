@@ -4,7 +4,6 @@ from aws_cdk import (
     aws_iam as iam,
     aws_route53 as route53,
     Duration,
-    Environment,
 )
 from constructs import Construct
 
