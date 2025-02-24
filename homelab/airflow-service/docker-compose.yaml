@@ -62,10 +62,10 @@ x-airflow-common:
   networks:
     - homelab
   volumes:
-    - ./dags:/opt/airflow/dags
+    - ./src/airflow/dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
-    - ./plugins:/opt/airflow/plugins
-    - ./data:/data
+    - ./src/airflow/plugins:/opt/airflow/plugins
+    - ./src/airflow/data:/data
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
   depends_on:
     redis:
