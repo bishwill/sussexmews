@@ -7,7 +7,11 @@ authors = [
     { name = "bishwill", email = "will.bishop9427@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = ["provision", "db"]
+dependencies = [
+    "provision",
+    "db",
+    "airflow-service",
+]
 
 [project.scripts]
 sussexmews = "sussexmews:main"
@@ -21,11 +25,12 @@ build-backend = "hatchling.build"
 
 
 [tool.uv.workspace]
-members = ["provision", "lib/*"]
+members = ["provision", "lib/*", "homelab/airflow-service"]
 
 [tool.uv.sources]
 provision = { workspace = true }
 db = { workspace = true }
+airflow-service = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sussexmews"]
