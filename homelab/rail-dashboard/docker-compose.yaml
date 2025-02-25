@@ -2,6 +2,7 @@ services:
   departure-board:
     image: docker.sussexmews.co.uk/rail-dashboard:latest
     container_name: rail-dashboard
+    restart: always
     networks:
       - homelab
     volumes:
