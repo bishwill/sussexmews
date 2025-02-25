@@ -31,7 +31,7 @@ def send_email(email: str, balance: float):
     msg["Cc"] = HOUSE_EMAILS["will"]
 
     with open("/data/bills-notifier/email.html", "r") as f:
-        html = MIMEText(f.read().replace("__balance__", str(balance * -1)), "html")
+        html = MIMEText(f.read().replace("__balance__", f"{balance * -1:.2f}"), "html")
         msg.attach(html)
 
     with open("/data/bills-notifier/reminder.gif", "rb") as f:

@@ -63,7 +63,7 @@ homelab/homebridge/volumes/homebridge
 config.xml
 homelab/speedtest-tracker/config
 homelab/tgtg/tokens
-homelab/airflow/logs
+homelab/airflow-service/logs
 homelab/document-store/consume
 homelab/document-store/data
 homelab/document-store/export

@@ -1,9 +1,10 @@
 from airflow import DAG
+from airflow.models import Variable
 from airflow.operators.bash import BashOperator
 from datetime import datetime
 
-csv_url = "https://docs.google.com/spreadsheets/d/18tXZh0ogEt14yv3SnQuM2bgpLD0QgOvewrul2WCjlRA/gviz/tq?tqx=out:csv&sheet=MonzoBillsPot"
-html_url = "https://docs.google.com/spreadsheets/d/18tXZh0ogEt14yv3SnQuM2bgpLD0QgOvewrul2WCjlRA/gviz/tq?tqx=out:html&sheet=MonzoBillsPot"
+CSV_URL = Variable.get("BILLS_SPREADSHEET_CSV_URL")
+HTML_URL = Variable.get("BILLS_SPREADSHEET_HTML_URL")
 
 
 dag = DAG(
@@ -32,13 +33,13 @@ git_init = BashOperator(
 
 download_latest_csv_file = BashOperator(
     task_id="download-csv",
-    bash_command=f"""cd /data/bills && curl -o bills.csv "{csv_url}" """,
+    bash_command=f"""cd /data/bills && curl -o bills.csv "{CSV_URL}" """,
     dag=dag,
 )
 
 download_latest_html_file = BashOperator(
     task_id="download-html",
-    bash_command=f"""cd /data/bills && curl -o bills.html "{html_url}" """,
+    bash_command=f"""cd /data/bills && curl -o bills.html "{HTML_URL}" """,
     dag=dag,
 )
 

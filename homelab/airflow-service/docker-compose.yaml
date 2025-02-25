@@ -62,11 +62,11 @@ x-airflow-common:
   networks:
     - homelab
   volumes:
-    - ./src/airflow/dags:/opt/airflow/dags
+    - ./src/airflow_service/dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
-    - ./src/airflow/plugins:/opt/airflow/plugins
-    - ./src/airflow/data:/data
-  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
+    - ./src/airflow_service/plugins:/opt/airflow/plugins
+    - ./src/airflow_service/data:/data
+  user: "${AIRFLOW_UID:-0}:${AIRFLOW_GID:-0}"
   depends_on:
     redis:
       condition: service_healthy
@@ -171,6 +171,7 @@ services:
 
 volumes:
   postgres-db-volume:
+    name: airflow-postgres-volume
 
 networks:
   homelab:
