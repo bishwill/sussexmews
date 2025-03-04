@@ -1,5 +1,4 @@
 version = 1
-revision = 1
 requires-python = ">=3.12"
 
 [manifest]
@@ -365,10 +364,14 @@ version = "0.1.0"
 source = { virtual = "homelab/api" }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
+    { name = "paramiko" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" }]
+requires-dist = [
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" },
+    { name = "paramiko", specifier = ">=3.5.1" },
+]
 
 [[package]]
 name = "apispec"

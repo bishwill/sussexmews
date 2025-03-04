@@ -2,6 +2,14 @@ import os
 
 import requests
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
+
+from app.lib.ssh import (
+    CatfordCastleMiniSSHClient,
+    CatfordCastleSSHClient,
+    SussexMewsSSHClient,
+)
+from app.models.kitchen_dashboard import KitchenDashboardUpdateRequest
 
 
 router = APIRouter(
@@ -10,10 +18,6 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-AIRFLOW_SESSION = requests.session()
-AIRFLOW_SESSION.auth = (os.environ["AIRFLOW_USER"], os.environ["AIRFLOW_PWD"])
-AIRFLOW_SESSION.headers = {"accept": "application/json"}
-
 
 @router.get("/")
 async def hello():
@@ -21,11 +25,14 @@ async def hello():
 
 
 @router.post("/update")
-async def update_dashboard():
-    response = AIRFLOW_SESSION.post(
-        "https://airflow.sussexmews.co.uk/api/v1/dags/bills_history_tracker/dagRuns",
-        json={},
-    )
-    response.raise_for_status()
+async def update_dashboard(update_request: KitchenDashboardUpdateRequest):
+    ssh_client: SussexMewsSSHClient = update_request.ssh_client()
 
-    return {"message": f"Dashboard Updated!"}
+    # update url
+    update_url_command = f"echo '{update_request.url}' | sudo tee /boot/fullpageos.txt"
+    ssh_client.execute(update_url_command).splitlines()[0]
+
+    # reboot
+    ssh_client.execute("sudo shutdown -r")
+
+    return {"msg": "URL successfully updated. Dashboard will reboot in 1 minute"}
