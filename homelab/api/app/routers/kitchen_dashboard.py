@@ -24,7 +24,7 @@ async def hello():
 async def update_dashboard():
     response = AIRFLOW_SESSION.post(
         "https://airflow.sussexmews.co.uk/api/v1/dags/bills_history_tracker/dagRuns",
-        json={}
+        json={},
     )
     response.raise_for_status()
 
