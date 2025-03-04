@@ -74,6 +74,7 @@ homelab/jellyfin/fonts
 homelab/jellyfin/media
 homelab/traefik/config/acme.json
 homelab/pypi/data
+homelab/airflow-service/src/data/bills
 
 
 # cdk
