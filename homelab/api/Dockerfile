@@ -15,6 +15,10 @@ RUN uv sync --frozen --no-dev
 
 FROM python:3.12-slim-bookworm
 
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install openssh-client -y
+
 COPY --from=builder --chown=app:app /app /app
 
 ENV PATH="/app/.venv/bin:$PATH"

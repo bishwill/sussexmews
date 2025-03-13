@@ -4,6 +4,9 @@ services:
     build:
       context: .
     env_file: .env
+    volumes:
+    - ~/.ssh/catfordcastle:/root/.ssh/catfordcastle:ro
+    - ~/.ssh/catfordcastlemini:/root/.ssh/catfordcastlemini:ro
     ports:
       - "8000:8000"
     networks:
