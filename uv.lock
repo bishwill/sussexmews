@@ -371,9 +371,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" },
-    { name = "paramiko", specifier = ">=3.5.1" },
-    { name = "requests", specifier = ">=2.32.3" },
+    { name = "fastapi", extras = ["standard"], specifier = "==0.115.11" },
+    { name = "paramiko", specifier = "==3.5.1" },
+    { name = "requests", specifier = "==2.32.3" },
 ]
 
 [[package]]
