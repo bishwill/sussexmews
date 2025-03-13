@@ -11,6 +11,7 @@ dependencies = [
     "provision",
     "db",
     "airflow-service",
+    "api",
 ]
 
 [project.scripts]
@@ -31,6 +32,7 @@ members = ["provision", "lib/*", "homelab/airflow-service", "homelab/api"]
 provision = { workspace = true }
 db = { workspace = true }
 airflow-service = { workspace = true }
+api = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sussexmews"]
