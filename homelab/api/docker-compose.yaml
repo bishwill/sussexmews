@@ -4,6 +4,7 @@ services:
     build:
       context: .
     env_file: .env
+    restart: always
     volumes:
     - ~/.ssh/catfordcastle:/root/.ssh/catfordcastle:ro
     - ~/.ssh/catfordcastlemini:/root/.ssh/catfordcastlemini:ro
