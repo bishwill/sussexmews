@@ -1,6 +1,6 @@
 [project]
 name = "sussexmews"
-version = "1.0.0"
+version = "1.0.1"
 description = "Sussex Mews shit"
 readme = "README.md"
 authors = [

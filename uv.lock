@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12"
 
 [manifest]
@@ -2449,7 +2450,7 @@ wheels = [
 
 [[package]]
 name = "sussexmews"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "airflow-service" },
