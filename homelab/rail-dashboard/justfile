@@ -1,0 +1,5 @@
+tsc:
+    tsc -p src/ts/tsconfig.json
+
+deploy:
+    docker compose up

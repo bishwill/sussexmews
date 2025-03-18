@@ -1,0 +1,32 @@
+
+body {
+    background-color: black;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    
+
+}
+
+.departure-board {
+    font-family: 'Courier New', Courier, monospace;
+    color: orange;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.time {
+    font-family: 'Courier New', Courier, monospace;
+    color: orange;
+    font-size: 100px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+

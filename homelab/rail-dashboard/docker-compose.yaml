@@ -1,18 +1,21 @@
 services:
-  departure-board:
-    image: docker.sussexmews.co.uk/rail-dashboard:latest
-    container_name: rail-dashboard
-    restart: always
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./src/html:/usr/share/nginx/html
+      - ./src/css:/usr/share/nginx/css
+      - ./src/js:/usr/share/nginx/js
+      - ./nginx.conf:/etc/nginx/nginx.conf
     networks:
       - homelab
-    volumes:
-    - "./config.xml:/app/config.xml"
+    ports:
+      - "8000:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.departures.entrypoints=websecure"
-      - "traefik.http.routers.departures.rule=Host(`departures.sussexmews.co.uk`)"
-      - "traefik.http.routers.departures.tls=true"
-      - "traefik.http.routers.departures.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.rule=Host(`nginx.sussexmews.co.uk`)"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.routers.nginx.tls.certresolver=letsencrypt"
 
 networks:
   homelab:
