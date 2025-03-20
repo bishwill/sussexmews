@@ -1,26 +1,45 @@
 
 body {
     background-color: black;
-}
-
-h1 {
     font-family: 'Courier New', Courier, monospace;
-    color: white;
-    
-
+    color: orange;
 }
 
 .departure-board {
-    font-family: 'Courier New', Courier, monospace;
-    color: orange;
+    font-size: 75px;
     position: relative;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
+.departure {
+    display: inline-block;
+}
+
+.train-order {
+    display: inline-block;
+}
+
+.departure-time {
+    display: inline-block;
+}
+
+.scheduled-departure-time {
+    display: inline-block;
+}
+
+.destination {
+    display: inline-block;
+}
+
+.actual-departure-time {
+    display: inline-block;
+}
+
+.departure-info {
+}
+
 .time {
-    font-family: 'Courier New', Courier, monospace;
-    color: orange;
     font-size: 100px;
     position: absolute;
     bottom: 20px;
