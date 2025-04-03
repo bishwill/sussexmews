@@ -3,6 +3,11 @@
 ## Overview
 This is project manages the Sussex Mews [website](https://sussexmews.co.uk) (work in progress), along with the various homelab services that runs on a Linux server (Ubuntu Server).
 
+## Architecture Diagram
+![architecture](architecture.png)
+
+
+
 ## Public Website
 - **Description**: A public facing website mainly to be used to learn frontend technologies.
 - **Tech Stack**: HTML for now. TODO: learn CSS, Typescript + React to make a nicer looking website.
