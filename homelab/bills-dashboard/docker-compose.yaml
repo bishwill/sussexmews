@@ -2,7 +2,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ../airflow/data/bills/bills.html:/usr/share/nginx/html/index.html
+      - ../airflow-service/src/airflow_service/data/bills/bills.html:/usr/share/nginx/html/index.html
       - ./nginx.conf:/etc/nginx/nginx.conf
     restart: always
     networks:
