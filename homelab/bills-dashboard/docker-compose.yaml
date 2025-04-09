@@ -4,6 +4,7 @@ services:
     volumes:
       - ../airflow/data/bills/bills.html:/usr/share/nginx/html/index.html
       - ./nginx.conf:/etc/nginx/nginx.conf
+    restart: always
     networks:
       - homelab
     labels:
