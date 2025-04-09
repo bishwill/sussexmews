@@ -13,7 +13,7 @@ from airflow.hooks.base import BaseHook
 import requests
 
 CSV_URL = Variable.get("BILLS_SPREADSHEET_CSV_URL")
-EMAIL_CREDENTIALS = BaseHook.get_connection("sussexmews-email")
+EMAIL_CREDENTIALS = BaseHook.get_connection("sussexmews_email")
 HOUSE_EMAILS = Variable.get("HOUSE_EMAILS", deserialize_json=True)
 
 
