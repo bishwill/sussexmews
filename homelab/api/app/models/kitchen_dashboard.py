@@ -21,8 +21,8 @@ class KitchenDashboardUpdateRequest(BaseModel):
     @property
     def server_name(self) -> str:
         mapping = {
-            "left": "catfordcastle",
-            "right": "catfordcastlemini",
+            "left": "catfordcastlemini",
+            "right": "catfordcastle",
         }
         return mapping[self.screen.value]
 
