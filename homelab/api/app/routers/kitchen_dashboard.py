@@ -13,6 +13,7 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
+
 @router.post("/update")
 async def update_dashboard(update_request: KitchenDashboardUpdateRequest):
     ssh_client: SussexMewsSSHClient = update_request.ssh_client()
