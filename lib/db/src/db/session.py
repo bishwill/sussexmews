@@ -1,6 +1,6 @@
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import Session
 
 from .engine import get_engine
 
 def get_session() -> Session:
-    return sessionmaker(bind=get_engine())
+    return Session(bind=get_engine())

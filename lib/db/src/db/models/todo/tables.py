@@ -6,8 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 from .base import Base
 
 
-class Items(Base):
-    __tablename__ = "items"
+class Task(Base):
+    __tablename__ = "task"
     id: Mapped[int] = mapped_column(Integer, Identity(always=False), primary_key=True)
     task: Mapped[str] = mapped_column(String, nullable=False)
     completed_at: Mapped[dt.datetime] = mapped_column(DateTime, nullable=True)

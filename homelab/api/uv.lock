@@ -38,7 +38,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "db", specifier = "==1.0.0", index = "https://pypi.sussexmews.co.uk/" },
+    { name = "db", specifier = "==1.0.1", index = "https://pypi.sussexmews.co.uk/" },
     { name = "fastapi", extras = ["standard"], specifier = "==0.115.11" },
     { name = "paramiko", specifier = "==3.5.1" },
     { name = "requests", specifier = "==2.32.3" },
@@ -229,15 +229,15 @@ wheels = [
 
 [[package]]
 name = "db"
-version = "1.0.0"
+version = "1.0.1"
 source = { registry = "https://pypi.sussexmews.co.uk/" }
 dependencies = [
     { name = "psycopg2-binary" },
     { name = "sqlalchemy" },
 ]
-sdist = { url = "https://pypi.sussexmews.co.uk/packages/db-1.0.0.tar.gz", hash = "sha256:c06314f24c3f9c494856208df73548676695a8924c35e25fb056d56bb49e9db0" }
+sdist = { url = "https://pypi.sussexmews.co.uk/packages/db-1.0.1.tar.gz", hash = "sha256:306df0daaea16ae151530ddc9583b0cf42d2f874019fb1f61e38da2ff7e5fa0c" }
 wheels = [
-    { url = "https://pypi.sussexmews.co.uk/packages/db-1.0.0-py3-none-any.whl", hash = "sha256:468a535e57c32c8bce29c2192edbda36d4893682ef52bbfd34d36cb77b94cdaa" },
+    { url = "https://pypi.sussexmews.co.uk/packages/db-1.0.1-py3-none-any.whl", hash = "sha256:a5670b6bcfbeb6067651c16d4796bddde650fcad38f1e682a021c133e13df43e" },
 ]
 
 [[package]]

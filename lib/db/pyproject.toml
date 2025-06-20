@@ -1,6 +1,6 @@
 [project]
 name = "db"
-version = "1.0.0"
+version = "1.0.1"
 description = "DB Migrations and ORM models"
 readme = "README.md"
 authors = [
