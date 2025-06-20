@@ -16,4 +16,3 @@ class Items(Base):
     created_by: Mapped[str] = mapped_column(String, nullable=False)
     updated_at: Mapped[dt.datetime] = mapped_column(DateTime, nullable=False)
     updated_by: Mapped[str] = mapped_column(String, nullable=False)
-    
