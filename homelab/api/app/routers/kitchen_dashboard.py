@@ -25,6 +25,4 @@ async def update_dashboard(update_request: KitchenDashboardUpdateRequest):
     # reboot
     ssh_client.execute("sudo shutdown -r")
 
-    return JSONResponse(
-        content={"msg": "URL successfully updated. Dashboard will reboot in 1 minute"}
-    )
+    return JSONResponse(content={"msg": "URL successfully updated. Dashboard will reboot in 1 minute"})

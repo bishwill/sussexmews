@@ -37,3 +37,6 @@ packages = ["src/sussexmews"]
 dev = [
     "ruff>=0.9.7",
 ]
+
+[tool.ruff]
+line-length = 170
