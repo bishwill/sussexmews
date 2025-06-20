@@ -11,7 +11,7 @@ router = APIRouter(
     tags=["todo"],
 )
 
+
 @router.get("/items")
 async def get_items(session: SessionDep):
     return session.scalars(select(Items).where(Items.completed_at == None)).all()
-
