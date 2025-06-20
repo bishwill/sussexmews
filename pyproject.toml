@@ -10,7 +10,6 @@ requires-python = ">=3.11"
 dependencies = [
     "provision",
     "airflow-service",
-    "api",
 ]
 
 [project.scripts]
@@ -25,12 +24,11 @@ build-backend = "hatchling.build"
 
 
 [tool.uv.workspace]
-members = ["provision", "homelab/airflow-service", "homelab/api"]
+members = ["provision", "homelab/airflow-service"]
 
 [tool.uv.sources]
 provision = { workspace = true }
 airflow-service = { workspace = true }
-api = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sussexmews"]

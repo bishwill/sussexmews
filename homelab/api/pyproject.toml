@@ -8,4 +8,13 @@ dependencies = [
     "fastapi[standard]==0.115.11",
     "paramiko==3.5.1",
     "requests==2.32.3",
+    "db==1.0.0",
 ]
+
+
+[tool.uv.sources]
+db = { index = "db" }
+
+[[tool.uv.index]]
+name = "db"
+url = "https://pypi.sussexmews.co.uk"
