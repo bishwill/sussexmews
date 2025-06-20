@@ -18,20 +18,26 @@ wheels = [
 
 [[package]]
 name = "db"
-version = "0.1.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
-    { name = "alembic" },
     { name = "psycopg2-binary" },
     { name = "sqlalchemy" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "alembic" },
+]
+
 [package.metadata]
 requires-dist = [
-    { name = "alembic", specifier = ">=1.13.3" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
     { name = "sqlalchemy", specifier = ">2.0.0" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "alembic", specifier = ">=1.13.3" }]
 
 [[package]]
 name = "greenlet"
