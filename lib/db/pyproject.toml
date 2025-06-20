@@ -24,3 +24,8 @@ db = "db:main"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[[tool.uv.index]]
+name = "sussexmews"
+url = "https://pypi.sussexmews.co.uk"
+publish-url = "https://pypi.sussexmews.co.uk"
+explicit = true
