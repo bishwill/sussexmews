@@ -9,7 +9,6 @@ authors = [
 requires-python = ">=3.11"
 dependencies = [
     "provision",
-    "db",
     "airflow-service",
     "api",
 ]
@@ -26,11 +25,10 @@ build-backend = "hatchling.build"
 
 
 [tool.uv.workspace]
-members = ["provision", "lib/*", "homelab/airflow-service", "homelab/api"]
+members = ["provision", "homelab/airflow-service", "homelab/api"]
 
 [tool.uv.sources]
 provision = { workspace = true }
-db = { workspace = true }
 airflow-service = { workspace = true }
 api = { workspace = true }
 
