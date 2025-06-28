@@ -56,13 +56,13 @@ def get_balances() -> dict[str, float]:
 
     # extract balances
     data = list(csv.reader(response.iter_lines(decode_unicode=True)))
-    hattie, will, oliver = [
+    will, guy, oliver = [
         float(x.replace("£", "").replace(",", "")) for x in data[1][-4:-1]
     ]
 
     return {
-        "hattie": {"balance": hattie, "email": HOUSE_EMAILS["hattie"]},
         "will": {"balance": will, "email": HOUSE_EMAILS["will"]},
+        "guy": {"balance": guy, "email": HOUSE_EMAILS["guy"]},
         "oliver": {"balance": oliver, "email": HOUSE_EMAILS["oliver"]},
     }
 
@@ -70,7 +70,7 @@ def get_balances() -> dict[str, float]:
 def main() -> None:
     balances = get_balances()
 
-    for person, info in balances.items():
+    for info in balances.values():
         if info["balance"] < 0:
             send_email(info["email"], info["balance"])
 
