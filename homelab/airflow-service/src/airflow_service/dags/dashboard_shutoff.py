@@ -1,4 +1,4 @@
-from datetime import datetime
+from pendulum import datetime
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
@@ -18,7 +18,7 @@ dag = DAG(
     },
     description="Shuts down the Raspberry Pis running the kitchen dashboard.",
     schedule_interval="0 22 * * *",
-    start_date=datetime(2025, 1, 1),
+    start_date=datetime(2025, 1, 1, tz="Europe/London"),
     catchup=False,
 )
 
