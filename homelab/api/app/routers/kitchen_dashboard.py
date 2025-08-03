@@ -4,7 +4,10 @@ from fastapi.responses import JSONResponse
 from app.lib.ssh import (
     SussexMewsSSHClient,
 )
-from app.models.kitchen_dashboard import KitchenDashboardUpdateRequest
+from app.models.kitchen_dashboard import (
+    KitchenDashboardUpdateRequest,
+    KitchenDashboardShutdownRequest,
+)
 
 
 router = APIRouter(
@@ -27,4 +30,18 @@ async def update_dashboard(update_request: KitchenDashboardUpdateRequest):
 
     return JSONResponse(
         content={"msg": "URL successfully updated. Dashboard will reboot in 1 minute"}
+    )
+
+
+@router.post("/shutdown")
+async def shutdown_dashboard(shutdown_request: KitchenDashboardShutdownRequest):
+    ssh_client: SussexMewsSSHClient = shutdown_request.ssh_client()
+
+    # reboot
+    ssh_client.execute("sudo shutdown -h now")
+
+    return JSONResponse(
+        content={
+            "msg": f"{shutdown_request.screen.capitalize()} screen successfullly shutdown!"
+        }
     )
