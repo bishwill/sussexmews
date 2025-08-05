@@ -29,9 +29,7 @@ async def update_dashboard(update_request: KitchenDashboardUpdateRequest):
     # reboot
     ssh_client.execute("sudo reboot -h now")
 
-    return JSONResponse(
-        content={"msg": "URL successfully updated!"}
-    )
+    return JSONResponse(content={"msg": "URL successfully updated!"})
 
 
 @router.post("/shutdown")
@@ -44,10 +42,11 @@ async def shutdown_dashboard(shutdown_request: KitchenDashboardShutdownRequest):
         }
     )
 
+
 @router.post("/reboot")
 async def reboot_dashboard(reboot_request: KitchenDashboardRebootRequest):
     reboot_request.ssh_client().execute("sudo reboot -h now")
-    
+
     return JSONResponse(
         content={
             "msg": f"{reboot_request.screen.capitalize()} screen successfullly rebooted!"
