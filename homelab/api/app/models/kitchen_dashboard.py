@@ -40,3 +40,6 @@ class KitchenDashboardUpdateRequest(KitchenDashboardBaseRequest):
 
 class KitchenDashboardShutdownRequest(KitchenDashboardBaseRequest):
     pass
+
+class KitchenDashboardRebootRequest(KitchenDashboardBaseRequest):
+    pass
