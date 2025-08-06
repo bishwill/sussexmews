@@ -9,7 +9,6 @@ BASE_URL = Variable.get("SUSSEXMEWS_API_BASE_URL")
 HEADERS = "-H 'accept: application/json' -H 'Content-Type: application/json'"
 
 
-
 dag = DAG(
     "dashboard_shutoff",
     default_args={
