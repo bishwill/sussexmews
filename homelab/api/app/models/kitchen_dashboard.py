@@ -14,9 +14,8 @@ class Screen(StrEnum):
     right = "right"
 
 
-class KitchenDashboardUpdateRequest(BaseModel):
+class KitchenDashboardBaseRequest(BaseModel):
     screen: Screen
-    url: str
 
     @property
     def server_name(self) -> str:
@@ -33,3 +32,15 @@ class KitchenDashboardUpdateRequest(BaseModel):
             "catfordcastlemini": CatfordCastleMiniSSHClient,
         }
         return mapping[self.server_name]
+
+
+class KitchenDashboardUpdateRequest(KitchenDashboardBaseRequest):
+    url: str
+
+
+class KitchenDashboardShutdownRequest(KitchenDashboardBaseRequest):
+    pass
+
+
+class KitchenDashboardRebootRequest(KitchenDashboardBaseRequest):
+    pass
