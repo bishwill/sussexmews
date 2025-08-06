@@ -7,7 +7,7 @@ from airflow.models import Variable
 
 BASE_URL = Variable.get("SUSSEXMEWS_API_BASE_URL")
 HEADERS = "-H 'accept: application/json' -H 'Content-Type: application/json'"
-DATA = """-d '{"screen": "right"}'"""
+
 
 
 dag = DAG(
@@ -25,6 +25,6 @@ dag = DAG(
 for screen_side in ("left", "right"):
     task = BashOperator(
         task_id=f"shutoff_{screen_side}_screen",
-        bash_command=f"curl --fail -X 'POST' '{BASE_URL}/kitchen-dashboard/shutdown' {HEADERS} {DATA}",
+        bash_command=f"""curl --fail -X 'POST' '{BASE_URL}/kitchen-dashboard/shutdown' {HEADERS} -d '{{"screen": "{screen_side}"}}'  """,
         dag=dag,
     )
