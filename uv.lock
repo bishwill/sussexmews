@@ -1,5 +1,4 @@
 version = 1
-revision = 1
 requires-python = ">=3.12"
 
 [manifest]
@@ -95,7 +94,7 @@ wheels = [
 
 [[package]]
 name = "airflow-service"
-version = "0.2.0"
+version = "0.3.0"
 source = { editable = "homelab/airflow-service" }
 dependencies = [
     { name = "apache-airflow" },
@@ -361,7 +360,7 @@ wheels = [
 
 [[package]]
 name = "api"
-version = "0.1.1"
+version = "0.2.0"
 source = { virtual = "homelab/api" }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
